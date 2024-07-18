@@ -38,6 +38,18 @@ namespace _2024FallCardGame
             return res;
         }
 
+        public static bool? CheckForThreeOfAKind(List<Card> cards)
+        {
+            //return (from card in cards
+            //        group card by card.rank into g
+            //        select g.Count() == 3).Any();
+            var group = cards.GroupBy(card => card.value);
+
+            bool? res = group.Any(group => group.Count() == 3);
+
+            return res;
+        }
+
         public static bool IsFlush(List<Card> cards)
         {
             return cards.GroupBy(card => card.suit)
@@ -55,6 +67,16 @@ namespace _2024FallCardGame
             //            .Distinct().Count() == 1;
 
 
+        }
+
+        public static bool IsStraight(List<Card> cards)
+        {
+            return true;
+        }
+
+        public static bool IsStraightFlush(List<Card> cards)
+        {
+            return IsFlush(cards) && IsStraight(cards);
         }
 
     }

@@ -34,4 +34,29 @@ public class UnitTest1
         Assert.False(aceInHand);
     }
 
+    [Fact]
+    public void TestCheckForPair_True()
+    {
+        List<Card> cards = new List<Card>() {   new Card("♣", 8, "8"),
+                                                new Card("♠", 8, "8"),
+                                                new Card("♦", 4, "4"),
+                                                new Card("♦", 5, "5"),
+                                                new Card("♥", 2, "2") };
+
+        bool? pairInHand = FiveCardDraw.CheckForPair(cards);
+        Assert.True(pairInHand);
+    }
+
+    [Fact]
+    public void TestCheckForPair_False()
+    {
+        List<Card> cards = new List<Card>() {   new Card("♣", 8, "8"),
+                                                new Card("♠", 12, "Q"),
+                                                new Card("♦", 4, "4"),
+                                                new Card("♦", 5, "5"),
+                                                new Card("♥", 2, "2") };
+
+        bool? pairInHand = FiveCardDraw.CheckForPair(cards);
+        Assert.False(pairInHand);
+    }
 }
