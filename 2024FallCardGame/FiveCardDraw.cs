@@ -78,6 +78,8 @@ namespace _2024FallCardGame
             return sortedCards.Zip(sortedCards
                                 .Skip(1), (a, b) => b - a)
                                 .All(diff => diff == 1);
+
+            // now remember that an Ace can be value = 14 or value = 1 when check for a straight
         }
 
         public static bool IsStraightFlush(List<Card> cards)
