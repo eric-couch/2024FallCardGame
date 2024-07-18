@@ -26,6 +26,7 @@ namespace _2024FallCardGame
 
         }
 
+
         public static bool? CheckForPair(List<Card> cards)
         {
             //return (from card in cards
@@ -71,7 +72,12 @@ namespace _2024FallCardGame
 
         public static bool IsStraight(List<Card> cards)
         {
-            return true;
+            var sortedCards = cards.OrderBy(card => card.value)
+                                    .Select(card => card.value).ToList();
+
+            return sortedCards.Zip(sortedCards
+                                .Skip(1), (a, b) => b - a)
+                                .All(diff => diff == 1);
         }
 
         public static bool IsStraightFlush(List<Card> cards)
